@@ -98,18 +98,18 @@ void	radix_sort_stacks(t_run *run)
     t_stack *b;
 
     a = (*run).stack_a;
-    b = (*run).stack_a;
+    b = (*run).stack_b;
 	if (a->size < 2 || is_sorted(a))
 		return ;
 	if (a->size == 2)
 	{
-		sa((*run));
+		sa(run);
 		return ;
 	}
 	if (!normalize(a))
-		free_and_exit(a, b);
+		free_and_exit(&a, &b);
 	if (a->size == 3)
-		sort_three((*run));
+		sort_three(run);
 	else
 		radix(run);
 }

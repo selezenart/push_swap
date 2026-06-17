@@ -111,7 +111,7 @@ void	medium_sort_stacks(t_run *run);
 void	sort_three(t_run *run);
 void	radix_sort_stacks(t_run *run);
 
-// Dispatch — disorder metric + algorithm chooser (no bench yet)
+// Solver — disorder metric + algorithm chooser (no bench yet)
 double	compute_disorder(t_stack *a);
 void	run_and_bench(t_stack **a, t_stack **b, t_run *run);
 

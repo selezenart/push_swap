@@ -55,9 +55,10 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	r.bench = 0;
-	r.strategy = parse_flags(&ac, &av, &r.bench);
-	if (r.strategy < 0 || ac < 2)
-		return (r.strategy < 0);
+	if (parse_flags(&ac, &av, &r) < 0)
+		return (error_exit(), 1);
+	if (ac < 2)
+		return (0);
 	if (init_stacks(ac, av, &stack_a, &stack_b) < 0)
 		return (1);
 	ft_memset(&c, 0, sizeof(t_counts));

@@ -116,6 +116,7 @@ void	medium_sort_stacks(t_run *run)
     t_stack *b;
 
     a = run->stack_a;
+    b = run->stack_b;
 	n = a->size;
 	if (n < 2 || is_sorted(a))
 		return ;
