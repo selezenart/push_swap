@@ -58,7 +58,6 @@ typedef struct s_run
 	t_stack		*stack_b;
 }	t_run;
 
-
 typedef enum e_strategy
 {
 	ADAPTIVE,
@@ -67,8 +66,10 @@ typedef enum e_strategy
 	COMPLEX
 }	t_strategy;
 
-// Parsing — returns size on success, -1 on error (no validation yet)
+// Parsing — returns size on success, -1 on error (validates format/range/dups)
 int		parse(int ac, char **av, int **values);
+int		validate_input(char **tokens, int size);
+int		has_duplicates(int *values, int size);
 
 // Stack creation
 t_stack	*create_stack(int *values, int size);

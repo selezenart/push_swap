@@ -10,8 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "push_swap.h"
 
 static int	get_rank(t_stack *a, t_stack *b, int val)
@@ -63,11 +61,11 @@ static int	find_max_pos(t_stack *b)
 
 static void	max_to_top(t_run *run)
 {
-	int	pos;
-	int	size;
-    t_stack *b;
+	int		pos;
+	int		size;
+	t_stack	*b;
 
-    b = run->stack_b;
+	b = run->stack_b;
 	pos = find_max_pos(b);
 	size = (b)->size;
 	if (pos <= size / 2)
@@ -110,13 +108,13 @@ static void	push_to_b(t_run *run, int sz)
 
 void	medium_sort_stacks(t_run *run)
 {
-	int	sz;
-	int	n;
-    t_stack *a;
-    t_stack *b;
+	int		sz;
+	int		n;
+	t_stack	*a;
+	t_stack	*b;
 
-    a = run->stack_a;
-    b = run->stack_b;
+	a = run->stack_a;
+	b = run->stack_b;
 	n = a->size;
 	if (n < 2 || is_sorted(a))
 		return ;

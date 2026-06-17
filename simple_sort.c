@@ -38,11 +38,11 @@ static int	find_max_pos(t_stack *stack)
 
 static void	move_max_to_top_b(t_run *run)
 {
-	int	pos;
-	int	size;
-    t_stack *b;
+	int		pos;
+	int		size;
+	t_stack	*b;
 
-    b = run->stack_b;
+	b = run->stack_b;
 	pos = find_max_pos(b);
 	size = b->size;
 	if (pos <= size / 2)
@@ -60,11 +60,11 @@ static void	move_max_to_top_b(t_run *run)
 
 void	selection_sort_stacks(t_run *run)
 {
-    t_stack *a;
-    t_stack *b;
-    
-    a = run->stack_a;
-    b = run->stack_b;
+	t_stack	*a;
+	t_stack	*b;
+
+	a = run->stack_a;
+	b = run->stack_b;
 	if (a->size < 2 || is_sorted(a))
 		return ;
 	if (a->size == 3)

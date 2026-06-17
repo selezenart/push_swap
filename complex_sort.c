@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 static int	count_smaller(int *vals, int size, int v)
@@ -94,11 +93,11 @@ static void	radix(t_run *run)
 
 void	radix_sort_stacks(t_run *run)
 {
-    t_stack *a;
-    t_stack *b;
+	t_stack	*a;
+	t_stack	*b;
 
-    a = (*run).stack_a;
-    b = (*run).stack_b;
+	a = (*run).stack_a;
+	b = (*run).stack_b;
 	if (a->size < 2 || is_sorted(a))
 		return ;
 	if (a->size == 2)

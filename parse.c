@@ -48,8 +48,21 @@ static int	fill_values(char **tokens, int size, int **values)
 	return (size);
 }
 
+// Drops the result if it holds duplicate values, freeing the array.
+static int	check_stack(int **values, int ret)
+{
+	if (ret > 0 && has_duplicates(*values, ret))
+	{
+		free(*values);
+		*values = NULL;
+		return (-1);
+	}
+	return (ret);
+}
+
 // Splits args into ints. A single arg is treated as a space-separated list,
-// many args are taken as-is. No validation yet — caller checks the return.
+// many args are taken as-is. Rejects empty input, non-integers, out-of-range
+// values and duplicates by returning -1.
 int	parse(int ac, char **av, int **values)
 {
 	char	**tokens;
@@ -65,8 +78,11 @@ int	parse(int ac, char **av, int **values)
 	if (!tokens)
 		return (-1);
 	size = get_size(tokens);
-	ret = fill_values(tokens, size, values);
+	if (size < 1 || !validate_input(tokens, size))
+		ret = -1;
+	else
+		ret = fill_values(tokens, size, values);
 	if (split)
 		free_nb_array(tokens);
-	return (ret);
+	return (check_stack(values, ret));
 }
