@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:54:15 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/16 14:16:12 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/16 19:20:27 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ typedef enum e_strategy
 	COMPLEX
 }	t_strategy;
 
-// Parsing — returns size on success, -1 on error
-int		parse_values(int ac, char **av, int **values);
+// Parsing — returns size on success, -1 on error (no validation yet)
+int		parse(int ac, char **av, int **values);
 
 // Stack creation
 t_stack	*create_stack(int *values, int size);
@@ -100,19 +100,19 @@ void	rrr(t_run *run);
 // Utils
 int		is_sorted(t_stack *stack);
 int		get_size(char **nb_array);
-char	*join_args(int ac, char **av);
 void	free_nb_array(char **nb_array);
-double	get_disorder(t_stack *stack);
 int		parse_flags(int *ac, char ***av, t_run *r);
-int		run_strategy(t_stack **a, t_stack **b, t_run *r);
-void	print_bench(double disorder, int strategy, t_counts *c);
 int		isqrt(int n);
 
 //Sorting
 
-void	selection_sort_stacks(t_run run);
-void	medium_sort_stacks(t_run run);
-void	sort_three(t_run run);
-void	radix_sort_stacks(t_run run);
+void	selection_sort_stacks(t_run *run);
+void	medium_sort_stacks(t_run *run);
+void	sort_three(t_run *run);
+void	radix_sort_stacks(t_run *run);
+
+// Dispatch — disorder metric + algorithm chooser (no bench yet)
+double	compute_disorder(t_stack *a);
+void	run_and_bench(t_stack **a, t_stack **b, t_run *run);
 
 #endif
