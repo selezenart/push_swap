@@ -15,17 +15,11 @@
 static char	*grow(char *buf, int len, int *cap)
 {
 	char	*new;
-	int		i;
 
 	new = malloc(*cap * 2);
 	if (!new)
 		return (free(buf), NULL);
-	i = 0;
-	while (i < len)
-	{
-		new[i] = buf[i];
-		i++;
-	}
+	ft_memcpy(new, buf, len);
 	free(buf);
 	*cap *= 2;
 	return (new);
