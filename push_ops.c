@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_ops.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:36:30 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:36:30 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:36 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Silent primitive (shared with the checker): move src's top onto dst.
 void	push(t_stack **dst, t_stack **src)
 {
 	t_node	*node;

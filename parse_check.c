@@ -3,17 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:25:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 13:25:00 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 01:09:30 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// One token must be a base-10 integer that fits in an int: optional sign,
-// at least one digit, digits only, no overflow past INT_MIN / INT_MAX.
 static int	is_valid_int(char *s)
 {
 	int		i;
@@ -39,7 +37,6 @@ static int	is_valid_int(char *s)
 	return (1);
 }
 
-// Every token must parse as a valid int. Returns 1 if all valid, else 0.
 int	validate_input(char **tokens, int size)
 {
 	int	i;
@@ -54,7 +51,6 @@ int	validate_input(char **tokens, int size)
 	return (1);
 }
 
-// Returns 1 if any value appears twice, else 0.
 int	has_duplicates(int *values, int size)
 {
 	int	i;

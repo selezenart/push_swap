@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 12:36:20 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:36:20 by aselezen         ###   ########.fr       */
+/*   Created: 2026/06/18 00:49:59 by aselezen          #+#    #+#             */
+/*   Updated: 2026/06/18 01:10:04 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-// Integer square root (floor) — used to size chunks in medium_sort.
 int	isqrt(int n)
 {
 	int	i;

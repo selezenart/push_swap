@@ -24,7 +24,7 @@ COMMON_SRCS	= parse.c parse_check.c stack_utils.c utils.c \
 			  swap_ops.c push_ops.c rotate_ops.c reverse_rotate_ops.c
 
 PS_SRCS		= push_swap.c flags.c solver.c bench.c \
-			  simple_sort.c medium_sort.c complex_sort.c $(COMMON_SRCS)
+			  simple_sort.c sort_five.c medium_sort.c complex_sort.c $(COMMON_SRCS)
 
 CH_SRCS		= checker_bonus.c checker_utils_bonus.c $(COMMON_SRCS)
 

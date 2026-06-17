@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:36:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:36:00 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:34 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ static int	fill_values(char **tokens, int size, int **values)
 	return (size);
 }
 
-// Drops the result if it holds duplicate values, freeing the array.
 static int	check_stack(int **values, int ret)
 {
 	if (ret > 0 && has_duplicates(*values, ret))
@@ -60,9 +59,6 @@ static int	check_stack(int **values, int ret)
 	return (ret);
 }
 
-// Splits args into ints. A single arg is treated as a space-separated list,
-// many args are taken as-is. Rejects empty input, non-integers, out-of-range
-// values and duplicates by returning -1.
 int	parse(int ac, char **av, int **values)
 {
 	char	**tokens;

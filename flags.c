@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:37:10 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:58:17 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:25 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ static int	match(char *f, t_run *r)
 	return (0);
 }
 
-// Reads optional leading selectors (--simple/--medium/--complex/--adaptive
-// and --bench, in any order) and shifts them out of av/ac so the rest of the
-// code sees only the numbers. Default strategy is ADAPTIVE, bench off.
-// Returns 0 on success, -1 on an unknown flag.
 int	parse_flags(int *ac, char ***av, t_run *r)
 {
 	char	*f;

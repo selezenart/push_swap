@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:54:15 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/16 19:20:27 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:43 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ int		isqrt(int n);
 void	selection_sort_stacks(t_run *run);
 void	medium_sort_stacks(t_run *run);
 void	sort_three(t_run *run);
+void	sort_five(t_run *run);
 void	radix_sort_stacks(t_run *run);
 
 // Solver — disorder metric + algorithm chooser

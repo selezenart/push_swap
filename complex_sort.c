@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex_sort.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:53:31 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/16 14:16:55 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:22 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,10 +105,11 @@ void	radix_sort_stacks(t_run *run)
 		sa(run);
 		return ;
 	}
+	if (a->size == 3)
+		return (sort_three(run));
+	if (a->size == 5)
+		return (sort_five(run));
 	if (!normalize(a))
 		free_and_exit(&a, &b);
-	if (a->size == 3)
-		sort_three(run);
-	else
-		radix(run);
+	radix(run);
 }

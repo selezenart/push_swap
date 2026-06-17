@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   medium_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:52:58 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/16 14:32:55 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:28 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,10 @@ void	medium_sort_stacks(t_run *run)
 	n = a->size;
 	if (n < 2 || is_sorted(a))
 		return ;
+	if (n == 3)
+		return (sort_three(run));
+	if (n == 5)
+		return (sort_five(run));
 	sz = isqrt(n);
 	if (sz < 1)
 		sz = 1;

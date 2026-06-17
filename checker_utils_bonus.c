@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 00:00:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/13 16:02:24 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:18 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

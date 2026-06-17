@@ -3,33 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   bench.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:10:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 13:10:00 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 00:51:03 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Disorder as a percentage with two decimals (e.g. 0.3725 -> "37.25%").
 static void	print_disorder(double d, int fd)
 {
-	int	whole;
-	int	frac;
+	int	percent;
+	int	decimal;
 
-	whole = (int)(d * 100);
-	frac = (int)(d * 10000) % 100;
+	percent = (int)(d * 100);
+	decimal = (int)(d * 10000) % 100;
 	ft_putstr_fd("Disorder: ", fd);
-	ft_putnbr_fd(whole, fd);
+	ft_putnbr_fd(percent, fd);
 	ft_putchar_fd('.', fd);
-	if (frac < 10)
+	if (decimal < 10)
 		ft_putchar_fd('0', fd);
-	ft_putnbr_fd(frac, fd);
+	ft_putnbr_fd(decimal, fd);
 	ft_putstr_fd("%\n", fd);
 }
 
-// Selected strategy name and its theoretical complexity class.
 static void	print_strategy(int s, int fd)
 {
 	ft_putstr_fd("Strategy: ", fd);
@@ -42,40 +40,42 @@ static void	print_strategy(int s, int fd)
 	ft_putchar_fd('\n', fd);
 }
 
-// t_counts is 11 contiguous ints in subject order: sa sb ss pa pb ra rb rr
-// rra rrb rrr. Walk it as an int array and return the running total.
-static int	print_counts(t_counts *c, int fd)
+static int	get_total_counts(t_counts *c)
 {
-	static char	*names[11] = {"sa", "sb", "ss", "pa", "pb", "ra", "rb",
-		"rr", "rra", "rrb", "rrr"};
-	int			*v;
-	int			i;
-	int			total;
+	return (c->sa + c->sb + c->ss + c->pa + c->pb
+		+ c->ra + c->rb + c->rr + c->rra + c->rrb + c->rrr);
+}
 
+static void	print_counts(t_counts *c, int fd)
+{
+	char	*ops;
+	int		*v;
+	int		i;
+
+	ops = "sa sb ss pa pb ra rb rr rra rrb rrr";
 	v = (int *)c;
 	i = 0;
-	total = 0;
 	while (i < 11)
 	{
-		ft_putstr_fd(names[i], fd);
+		while (*ops && *ops != ' ')
+			ft_putchar_fd(*ops++, fd);
+		if (*ops == ' ')
+			ops++;
 		ft_putstr_fd(": ", fd);
 		ft_putnbr_fd(v[i], fd);
 		ft_putchar_fd('\n', fd);
-		total += v[i];
 		i++;
 	}
-	return (total);
 }
 
-// Full --bench report to stderr. Order: disorder, strategy + class,
-// total ops, then each operation count.
 void	print_bench(t_run *run)
 {
 	int	total;
 
 	print_disorder(run->disorder, 2);
 	print_strategy(run->chosen, 2);
-	total = print_counts(run->counts, 2);
+	print_counts(run->counts, 2);
+	total = get_total_counts(run->counts);
 	ft_putstr_fd("Total ops: ", 2);
 	ft_putnbr_fd(total, 2);
 	ft_putchar_fd('\n', 2);

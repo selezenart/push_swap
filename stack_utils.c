@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 12:36:10 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:36:10 by aselezen         ###   ########.fr       */
+/*   Created: 2026/06/17 12:30:10 by aselezen          #+#    #+#             */
+/*   Updated: 2026/06/18 01:09:57 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static t_node	*new_node(int value)
 	return (node);
 }
 
-// Builds a stack from values, keeping input order (values[0] on top).
 t_stack	*create_stack(int *values, int size)
 {
 	t_stack	*stack;

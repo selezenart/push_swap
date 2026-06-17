@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   reverse_rotate_ops.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 12:36:50 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:36:50 by aselezen         ###   ########.fr       */
+/*   Created: 2026/06/17 12:27:50 by aselezen          #+#    #+#             */
+/*   Updated: 2026/06/18 00:51:46 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Silent primitive (shared with the checker): bottom element goes to the top.
 void	reverse_rotate(t_stack **s)
 {
 	t_node	*prev;

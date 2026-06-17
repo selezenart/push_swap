@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   rotate_ops.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/17 12:36:40 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/17 12:36:40 by aselezen         ###   ########.fr       */
+/*   Created: 2026/06/17 12:42:40 by aselezen          #+#    #+#             */
+/*   Updated: 2026/06/18 00:51:51 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Silent primitive (shared with the checker): top element goes to the bottom.
 void	rotate(t_stack **s)
 {
 	t_node	*first;
