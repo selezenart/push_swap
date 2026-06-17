@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baserbet <baserbet@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/07 00:00:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/09 19:55:19 by baserbet         ###   ########.fr       */
+/*   Updated: 2026/06/18 01:14:40 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+         #
+#    By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/17 12:38:00 by aselezen          #+#    #+#              #
-#    Updated: 2026/06/17 12:38:00 by aselezen         ###   ########.fr        #
+#    Updated: 2026/06/18 01:15:32 by aselezen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
