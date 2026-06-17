@@ -53,11 +53,20 @@ static void	adaptive_sort(t_run *run)
 
 	d = run->disorder;
 	if (d < 0.05)
+	{
+		run->chosen = SIMPLE;
 		selection_sort_stacks(run);
+	}
 	else if (d < 0.5)
+	{
+		run->chosen = MEDIUM;
 		medium_sort_stacks(run);
+	}
 	else
+	{
+		run->chosen = COMPLEX;
 		radix_sort_stacks(run);
+	}
 }
 
 // Entry point: wire the stacks into run, then dispatch on strategy.
@@ -66,6 +75,7 @@ void	run_and_bench(t_stack **a, t_stack **b, t_run *run)
 {
 	run->stack_a = *a;
 	run->stack_b = *b;
+	run->chosen = run->strategy;
 	if (run->strategy == SIMPLE)
 		selection_sort_stacks(run);
 	else if (run->strategy == MEDIUM)
@@ -74,4 +84,6 @@ void	run_and_bench(t_stack **a, t_stack **b, t_run *run)
 		radix_sort_stacks(run);
 	else
 		adaptive_sort(run);
+	if (run->bench)
+		print_bench(run);
 }

@@ -22,28 +22,33 @@ static int	match(char *f, t_run *r)
 		r->strategy = MEDIUM;
 	else if (!ft_strncmp(f, "--complex", 10))
 		r->strategy = COMPLEX;
+	else if (!ft_strncmp(f, "--bench", 8))
+		r->bench = 1;
 	else
 		return (-1);
 	return (0);
 }
 
-// Reads an optional leading strategy selector and shifts it out of av/ac so the
-// rest of the code sees only the numbers. Default strategy is ADAPTIVE.
+// Reads optional leading selectors (--simple/--medium/--complex/--adaptive
+// and --bench, in any order) and shifts them out of av/ac so the rest of the
+// code sees only the numbers. Default strategy is ADAPTIVE, bench off.
 // Returns 0 on success, -1 on an unknown flag.
 int	parse_flags(int *ac, char ***av, t_run *r)
 {
 	char	*f;
 
 	r->strategy = ADAPTIVE;
-	if (*ac < 2)
-		return (0);
-	f = (*av)[1];
-	if (f[0] != '-' || f[1] != '-')
-		return (0);
-	if (match(f, r) < 0)
-		return (-1);
-	(*av)[1] = (*av)[0];
-	(*av)++;
-	(*ac)--;
+	r->bench = 0;
+	while (*ac >= 2)
+	{
+		f = (*av)[1];
+		if (f[0] != '-' || f[1] != '-')
+			return (0);
+		if (match(f, r) < 0)
+			return (-1);
+		(*av)[1] = (*av)[0];
+		(*av)++;
+		(*ac)--;
+	}
 	return (0);
 }

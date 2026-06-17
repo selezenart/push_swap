@@ -54,7 +54,6 @@ int	main(int ac, char **av)
 
 	if (ac < 2)
 		return (0);
-	r.bench = 0;
 	if (parse_flags(&ac, &av, &r) < 0)
 		return (error_exit(), 1);
 	if (ac < 2)
