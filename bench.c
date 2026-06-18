@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 13:10:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/18 00:51:03 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 02:10:18 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,6 @@ static void	print_strategy(int s, int fd)
 	else
 		ft_putstr_fd("Complex O(n log n)", fd);
 	ft_putchar_fd('\n', fd);
-}
-
-static int	get_total_counts(t_counts *c)
-{
-	return (c->sa + c->sb + c->ss + c->pa + c->pb
-		+ c->ra + c->rb + c->rr + c->rra + c->rrb + c->rrr);
 }
 
 static void	print_counts(t_counts *c, int fd)

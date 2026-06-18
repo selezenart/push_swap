@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 13:52:13 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/18 00:52:13 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 02:09:17 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ void	sa(t_run *run)
 {
 	swap(&run->stack_a);
 	run->counts->sa++;
-	write(1, "sa\n", 3);
+	put_op(run, "sa\n");
 }
 
 void	sb(t_run *run)
 {
 	swap(&run->stack_b);
 	run->counts->sb++;
-	write(1, "sb\n", 3);
+	put_op(run, "sb\n");
 }
 
 void	ss(t_run *run)
@@ -49,5 +49,5 @@ void	ss(t_run *run)
 	swap(&run->stack_a);
 	swap(&run->stack_b);
 	run->counts->ss++;
-	write(1, "ss\n", 3);
+	put_op(run, "ss\n");
 }

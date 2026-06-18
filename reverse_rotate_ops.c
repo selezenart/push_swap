@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:27:50 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/18 00:51:46 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 02:09:35 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@ void	rra(t_run *run)
 {
 	reverse_rotate(&run->stack_a);
 	run->counts->rra++;
-	write(1, "rra\n", 4);
+	put_op(run, "rra\n");
 }
 
 void	rrb(t_run *run)
 {
 	reverse_rotate(&run->stack_b);
 	run->counts->rrb++;
-	write(1, "rrb\n", 4);
+	put_op(run, "rrb\n");
 }
 
 void	rrr(t_run *run)
@@ -47,5 +47,5 @@ void	rrr(t_run *run)
 	reverse_rotate(&run->stack_a);
 	reverse_rotate(&run->stack_b);
 	run->counts->rrr++;
-	write(1, "rrr\n", 4);
+	put_op(run, "rrr\n");
 }

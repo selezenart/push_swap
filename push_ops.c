@@ -30,12 +30,12 @@ void	pa(t_run *run)
 {
 	push(&run->stack_a, &run->stack_b);
 	run->counts->pa++;
-	write(1, "pa\n", 3);
+	put_op(run, "pa\n");
 }
 
 void	pb(t_run *run)
 {
 	push(&run->stack_b, &run->stack_a);
 	run->counts->pb++;
-	write(1, "pb\n", 3);
+	put_op(run, "pb\n");
 }
