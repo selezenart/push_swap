@@ -3,62 +3,77 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/06/17 12:38:00 by aselezen          #+#    #+#              #
-#    Updated: 2026/06/18 01:15:32 by aselezen         ###   ########.fr        #
+#    Updated: 2026/06/19 13:07:12 by aselezen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		= push_swap
-CHECKER		= checker
+NAME = push_swap
+BONUS_NAME = checker
 
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-RM			= rm -f
+LIBFT_DIR = libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
-LIBFT_DIR	= libft
-LIBFT		= $(LIBFT_DIR)/libft.a
+CC = cc
+FLAGS = -Wall -Wextra -Werror
 
-COMMON_SRCS	= parse.c parse_check.c stack_utils.c utils.c \
-			  swap_ops.c push_ops.c rotate_ops.c reverse_rotate_ops.c
+SHARED_SRC = parse.c \
+			parse_check.c \
+			stack_utils.c \
+			utils.c \
+			push_ops.c \
+			swap_ops.c \
+			rotate_ops.c \
+			reverse_rotate_ops.c
 
-PS_SRCS		= push_swap.c flags.c solver.c bench.c \
-			  simple_sort.c sort_five.c medium_sort.c complex_sort.c $(COMMON_SRCS)
+SRC = push_swap.c \
+			$(SHARED_SRC) \
+			solver.c \
+			flags.c \
+			bench.c \
+			simple_sort.c \
+			medium_sort.c \
+			complex_sort.c \
+			sort_five.c
 
-CH_SRCS		= checker_bonus.c checker_utils_bonus.c $(COMMON_SRCS)
+BONUS_SRC = checker_bonus.c \
+			checker_utils_bonus.c \
+			$(SHARED_SRC)
 
-PS_OBJS		= $(PS_SRCS:.c=.o)
-CH_OBJS		= $(CH_SRCS:.c=.o)
+OBJ = $(SRC:.c=.o)
+BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 all: $(NAME)
 
-bonus: $(CHECKER)
+$(LIBFT):
+	@$(MAKE) -s -C $(LIBFT_DIR)
+	@echo "libft archive created successfully!"
 
-$(LIBFT): FORCE
-	$(MAKE) -C $(LIBFT_DIR)
+%.o: %.c
+	@$(CC) $(FLAGS) -I . -I $(LIBFT_DIR) -c $< -o $@
 
-FORCE:
+$(NAME): $(LIBFT) $(OBJ)
+	@$(CC) $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@echo "push_swap compiled successfully!"
 
-$(NAME): $(LIBFT) $(PS_OBJS)
-	$(CC) $(CFLAGS) $(PS_OBJS) $(LIBFT) -o $(NAME)
-
-$(CHECKER): $(LIBFT) $(CH_OBJS)
-	$(CC) $(CFLAGS) $(CH_OBJS) $(LIBFT) -o $(CHECKER)
-
-%.o: %.c push_swap.h
-	$(CC) $(CFLAGS) -c $< -o $@
-
-checker_bonus.o checker_utils_bonus.o: checker_bonus.h
+bonus: $(LIBFT) $(BONUS_OBJ)
+	@$(CC) $(FLAGS) $(BONUS_OBJ) $(LIBFT) -o $(BONUS_NAME)
+	@echo "bonus checker compiled successfully!"
 
 clean:
-	$(RM) $(PS_OBJS) $(CH_OBJS)
-	$(MAKE) -C $(LIBFT_DIR) clean
+	@rm -f $(OBJ)
+	@rm -f $(BONUS_OBJ)
+	@echo "removed object files."
 
 fclean: clean
-	$(RM) $(NAME) $(CHECKER)
-	$(MAKE) -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
+	@rm -f $(BONUS_NAME)
+	@echo "deleted push_swap and / or checker."
+	@$(MAKE) -s -C $(LIBFT_DIR) fclean
+	@echo "deleted libft archive."
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re FORCE
+.PHONY: all bonus clean fclean re

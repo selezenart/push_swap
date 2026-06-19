@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:54:15 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/18 01:37:39 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/18 15:49:23 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 # include "libft/libft.h"
 # include <limits.h>
+
+# define SIMPLE   "--simple"
+# define MEDIUM   "--medium"
+# define COMPLX   "--complex"
+# define ADAPT    "--adaptive"
+# define BENCH    "--bench"
 
 // Singly-linked stack node. Mirrors t_list but stores the int inline,
 // so no void * content / cast is needed.
