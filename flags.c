@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:37:10 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/18 15:54:00 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/19 14:59:49 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 static int	match(char *f, t_run *r)
 {
-	if (!ft_strncmp(f, ADAPTIVE, ft_strlen(ADAPTIVE) + 1))
+	if (!ft_strncmp(f, FLAG_ADAPT, ft_strlen(FLAG_ADAPT) + 1))
 		r->strategy = ADAPTIVE;
-	else if (!ft_strncmp(f, SIMPLE, ft_strlen(SIMPLE)+1))
+	else if (!ft_strncmp(f, FLAG_SIMPLE, ft_strlen(FLAG_SIMPLE) + 1))
 		r->strategy = SIMPLE;
-	else if (!ft_strncmp(f, MEDIUM, ft_strlen(MEDIUM) + 1))
+	else if (!ft_strncmp(f, FLAG_MEDIUM, ft_strlen(FLAG_MEDIUM) + 1))
 		r->strategy = MEDIUM;
-	else if (!ft_strncmp(f, COMPLEX, ft_strlen(COMPLEX) + 1))
+	else if (!ft_strncmp(f, FLAG_COMPLEX, ft_strlen(FLAG_COMPLEX) + 1))
 		r->strategy = COMPLEX;
-	else if (!ft_strncmp(f, BENCH, ft_strlen(BENCH) + 1))
+	else if (!ft_strncmp(f, FLAG_BENCH, ft_strlen(FLAG_BENCH) + 1))
 		r->bench = 1;
 	else
 		return (-1);
