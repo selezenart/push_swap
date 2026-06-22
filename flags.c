@@ -6,14 +6,30 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:37:10 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/19 14:59:49 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:36:58 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	match(char *f, t_run *r)
+// Toggle a standalone flag once. seen guards against duplicates,
+// target is the t_run field it switches on. Add a new toggle flag
+// with a single line in match() that calls this.
+static int	set_once(int *seen, int *target)
 {
+	if (*seen)
+		return (-1);
+	*seen = 1;
+	*target = 1;
+	return (0);
+}
+
+static int	match(char *f, t_run *r, int *strat, int *seen)
+{
+	if (!ft_strncmp(f, FLAG_BENCH, ft_strlen(FLAG_BENCH) + 1))
+		return (set_once(&seen[0], &r->bench));
+	if (*strat)
+		return (-1);
 	if (!ft_strncmp(f, FLAG_ADAPT, ft_strlen(FLAG_ADAPT) + 1))
 		r->strategy = ADAPTIVE;
 	else if (!ft_strncmp(f, FLAG_SIMPLE, ft_strlen(FLAG_SIMPLE) + 1))
@@ -22,29 +38,44 @@ static int	match(char *f, t_run *r)
 		r->strategy = MEDIUM;
 	else if (!ft_strncmp(f, FLAG_COMPLEX, ft_strlen(FLAG_COMPLEX) + 1))
 		r->strategy = COMPLEX;
-	else if (!ft_strncmp(f, FLAG_BENCH, ft_strlen(FLAG_BENCH) + 1))
-		r->bench = 1;
 	else
 		return (-1);
+	*strat = 1;
 	return (0);
 }
 
-int	parse_flags(int *ac, char ***av, t_run *r)
+static int	shift_args(char **av, int ac, int start)
 {
-	char	*f;
+	int	offset;
+
+	offset = 1;
+	while (start < ac)
+	{
+		if (av[start][0] == '-' && av[start][1] == '-')
+			return (-1);
+		av[offset++] = av[start++];
+	}
+	av[offset] = NULL;
+	return (offset);
+}
+
+int	parse_flags(int ac, char **av, t_run *r)
+{
+	int	i;
+	int	strat;
+	int	seen[2];
 
 	r->strategy = ADAPTIVE;
 	r->bench = 0;
-	while (*ac >= 2)
+	strat = 0;
+	seen[0] = 0;
+	seen[1] = 0;
+	i = 1;
+	while (i < ac && av[i][0] == '-' && av[i][1] == '-')
 	{
-		f = (*av)[1];
-		if (f[0] != '-' || f[1] != '-')
-			return (0);
-		if (match(f, r) < 0)
+		if (match(av[i], r, &strat, seen) < 0)
 			return (-1);
-		(*av)[1] = (*av)[0];
-		(*av)++;
-		(*ac)--;
+		i++;
 	}
-	return (0);
+	return (shift_args(av, ac, i));
 }

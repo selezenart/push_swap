@@ -6,7 +6,7 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:54:15 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/19 14:59:13 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/22 13:30:22 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	rrr(t_run *run);
 int		is_sorted(t_stack *stack);
 int		get_size(char **nb_array);
 void	free_nb_array(char **nb_array);
-int		parse_flags(int *ac, char ***av, t_run *r);
+int		parse_flags(int ac, char **av, t_run *r);
 int		isqrt(int n);
 void	put_op(t_run *run, char *op);
 void	print_op_count(t_run *run);

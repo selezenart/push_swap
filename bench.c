@@ -19,7 +19,7 @@ static void	print_disorder(double d, int fd)
 
 	percent = (int)(d * 100);
 	decimal = (int)(d * 10000) % 100;
-	ft_putstr_fd("Disorder: ", fd);
+	ft_putstr_fd("[bench] disorder: ", fd);
 	ft_putnbr_fd(percent, fd);
 	ft_putchar_fd('.', fd);
 	if (decimal < 10)
@@ -28,38 +28,51 @@ static void	print_disorder(double d, int fd)
 	ft_putstr_fd("%\n", fd);
 }
 
-static void	print_strategy(int s, int fd)
+static void	print_strategy(t_run *run)
 {
-	ft_putstr_fd("Strategy: ", fd);
-	if (s == SIMPLE)
-		ft_putstr_fd("Simple O(n^2)", fd);
-	else if (s == MEDIUM)
-		ft_putstr_fd("Medium O(n*sqrt(n))", fd);
+	ft_putstr_fd("[bench] strategy:  ", 2);
+	if (run->strategy == SIMPLE)
+		ft_putstr_fd("Simple", 2);
+	else if (run->strategy == MEDIUM)
+		ft_putstr_fd("Medium", 2);
+	else if (run->strategy == COMPLEX)
+		ft_putstr_fd("Complex", 2);
 	else
-		ft_putstr_fd("Complex O(n log n)", fd);
-	ft_putchar_fd('\n', fd);
+		ft_putstr_fd("Adaptive", 2);
+	ft_putstr_fd(" / ", 2);
+	if (run->chosen == SIMPLE)
+		ft_putstr_fd("O(n^2)", 2);
+	else if (run->chosen == MEDIUM)
+		ft_putstr_fd("O(n√n)", 2);
+	else
+		ft_putstr_fd("O(n log n)", 2);
+	ft_putchar_fd('\n', 2);
 }
 
-static void	print_counts(t_counts *c, int fd)
+static void	print_range(char **n, int *v, int a, int b)
 {
-	char	*ops;
-	int		*v;
-	int		i;
-
-	ops = "sa sb ss pa pb ra rb rr rra rrb rrr";
-	v = (int *)c;
-	i = 0;
-	while (i < 11)
+	ft_putstr_fd("[bench] ", 2);
+	while (a < b)
 	{
-		while (*ops && *ops != ' ')
-			ft_putchar_fd(*ops++, fd);
-		if (*ops == ' ')
-			ops++;
-		ft_putstr_fd(": ", fd);
-		ft_putnbr_fd(v[i], fd);
-		ft_putchar_fd('\n', fd);
-		i++;
+		ft_putstr_fd(n[a], 2);
+		ft_putstr_fd(": ", 2);
+		ft_putnbr_fd(v[a], 2);
+		if (a + 1 < b)
+			ft_putchar_fd(' ', 2);
+		a++;
 	}
+	ft_putchar_fd('\n', 2);
+}
+
+static void	print_counts(t_counts *c)
+{
+	char	*n[11] = {"sa", "sb", "ss", "pa", "pb",
+		"ra", "rb", "rr", "rra", "rrb", "rrr"};
+	int		*v;
+
+	v = (int *)c;
+	print_range(n, v, 0, 5);
+	print_range(n, v, 5, 11);
 }
 
 void	print_bench(t_run *run)
@@ -67,10 +80,10 @@ void	print_bench(t_run *run)
 	int	total;
 
 	print_disorder(run->disorder, 2);
-	print_strategy(run->chosen, 2);
-	print_counts(run->counts, 2);
+	print_strategy(run);
 	total = get_total_counts(run->counts);
-	ft_putstr_fd("Total ops: ", 2);
+	ft_putstr_fd("[bench] total_ops: ", 2);
 	ft_putnbr_fd(total, 2);
 	ft_putchar_fd('\n', 2);
+	print_counts(run->counts);
 }
