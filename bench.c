@@ -66,10 +66,20 @@ static void	print_range(char **n, int *v, int a, int b)
 
 static void	print_counts(t_counts *c)
 {
-	char	*n[11] = {"sa", "sb", "ss", "pa", "pb",
-		"ra", "rb", "rr", "rra", "rrb", "rrr"};
+	char	*n[11];
 	int		*v;
 
+	n[0] = "sa";
+	n[1] = "sb";
+	n[2] = "ss";
+	n[3] = "pa";
+	n[4] = "pb";
+	n[5] = "ra";
+	n[6] = "rb";
+	n[7] = "rr";
+	n[8] = "rra";
+	n[9] = "rrb";
+	n[10] = "rrr";
 	v = (int *)c;
 	print_range(n, v, 0, 5);
 	print_range(n, v, 5, 11);

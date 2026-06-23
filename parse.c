@@ -12,26 +12,6 @@
 
 #include "push_swap.h"
 
-int	get_size(char **nb_array)
-{
-	int	i;
-
-	i = 0;
-	while (nb_array[i])
-		i++;
-	return (i);
-}
-
-void	free_nb_array(char **nb_array)
-{
-	int	i;
-
-	i = 0;
-	while (nb_array[i])
-		free(nb_array[i++]);
-	free(nb_array);
-}
-
 static int	fill_values(char **tokens, int size, int **values)
 {
 	int	i;
@@ -59,18 +39,39 @@ static int	check_stack(int **values, int ret)
 	return (ret);
 }
 
+static char	*join_args(int ac, char **av)
+{
+	char	*res;
+	char	*tmp;
+	int		i;
+
+	res = ft_strdup(av[1]);
+	i = 2;
+	while (res && i < ac)
+	{
+		tmp = ft_strjoin(res, " ");
+		free(res);
+		if (!tmp)
+			return (NULL);
+		res = ft_strjoin(tmp, av[i]);
+		free(tmp);
+		i++;
+	}
+	return (res);
+}
+
 int	parse(int ac, char **av, int **values)
 {
 	char	**tokens;
+	char	*joined;
 	int		size;
-	int		split;
 	int		ret;
 
-	split = (ac == 2);
-	if (split)
-		tokens = ft_split(av[1], ' ');
-	else
-		tokens = av + 1;
+	joined = join_args(ac, av);
+	if (!joined)
+		return (-1);
+	tokens = ft_split(joined, ' ');
+	free(joined);
 	if (!tokens)
 		return (-1);
 	size = get_size(tokens);
@@ -78,7 +79,6 @@ int	parse(int ac, char **av, int **values)
 		ret = -1;
 	else
 		ret = fill_values(tokens, size, values);
-	if (split)
-		free_nb_array(tokens);
+	free_nb_array(tokens);
 	return (check_stack(values, ret));
 }

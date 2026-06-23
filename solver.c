@@ -6,11 +6,23 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:37:00 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/22 13:37:32 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:23:56 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static int	do_optimal(t_run *run)
+{
+	t_stack	*a;
+
+	a = run->stack_a;
+	if (a->size == 3)
+		return (sort_three(run), 1);
+	if (a->size == 5)
+		return (sort_five(run), 1);
+	return (0);
+}
 
 double	compute_disorder(t_stack *a)
 {
@@ -45,6 +57,8 @@ static void	adaptive_sort(t_run *run)
 {
 	double	d;
 
+	if (do_optimal(run))
+		return ;
 	d = run->disorder;
 	if (d < 0.05)
 	{

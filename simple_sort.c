@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   simple_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aselezen <aselezen@student.42heilbronn.    +#+  +:+       +#+        */
+/*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/16 12:52:29 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/18 02:09:27 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:14:15 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,6 @@ void	selection_sort_stacks(t_run *run)
 	b = run->stack_b;
 	if (a->size < 2 || is_sorted(a))
 		return ;
-	if (a->size == 3)
-		return (sort_three(run));
-	if (a->size == 5)
-		return (sort_five(run));
 	while (a->size > 0)
 		pb(run);
 	while (b->size > 0)

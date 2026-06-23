@@ -12,6 +12,26 @@
 
 #include "push_swap.h"
 
+int	get_size(char **nb_array)
+{
+	int	i;
+
+	i = 0;
+	while (nb_array[i])
+		i++;
+	return (i);
+}
+
+void	free_nb_array(char **nb_array)
+{
+	int	i;
+
+	i = 0;
+	while (nb_array[i])
+		free(nb_array[i++]);
+	free(nb_array);
+}
+
 static int	is_valid_int(char *s)
 {
 	int		i;

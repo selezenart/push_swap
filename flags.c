@@ -6,15 +6,12 @@
 /*   By: aselezen <aselezen@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/17 12:37:10 by aselezen          #+#    #+#             */
-/*   Updated: 2026/06/22 13:36:58 by aselezen         ###   ########.fr       */
+/*   Updated: 2026/06/23 13:02:22 by aselezen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// Toggle a standalone flag once. seen guards against duplicates,
-// target is the t_run field it switches on. Add a new toggle flag
-// with a single line in match() that calls this.
 static int	set_once(int *seen, int *target)
 {
 	if (*seen)
